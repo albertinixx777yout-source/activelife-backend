@@ -3,6 +3,11 @@ from typing import List
 from models.pago import PagoCreate, PagoResponse, MetodoPagoCreate, MetodoPagoResponse
 from database import supabase
 
+"""
+Router para la gestión de Pagos y Métodos de Pago.
+Desarrollado por: Alberto Somoza (Área de Dominio: Pagos y Facturación)
+"""
+
 router = APIRouter(prefix="/pagos", tags=["Pagos"])
 
 # --- ENDPOINTS PARA MÉTODOS DE PAGO ---
