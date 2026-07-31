@@ -5,7 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 
 
 TIPOS_SERVICIO_PERMITIDOS = {"Clase", "Gimnasio", "Reserva", "Grupal", "Individual", "Personal"}
-ESTADOS_RESERVA_PERMITIDOS = {"Pendiente", "Confirmada", "Cancelada", "pendiente", "confirmada", "cancelada"}
+ESTADOS_RESERVA_PERMITIDOS = {"Pendiente", "Confirmada", "Cancelada", "pendiente", "confirmada", "cancelada", "Rechazada", "Rechazado", "rechazada", "rechazado"}
 
 
 class ServicioBase(BaseModel):
