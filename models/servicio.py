@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
-TIPOS_SERVICIO_PERMITIDOS = {"Clase", "Gimnasio", "Reserva"}
+TIPOS_SERVICIO_PERMITIDOS = {"Clase", "Gimnasio", "Reserva", "Grupal", "Individual", "Personal"}
 ESTADOS_RESERVA_PERMITIDOS = {"Pendiente", "Confirmada", "Cancelada"}
 
 
