@@ -5,7 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 
 
 TIPOS_SERVICIO_PERMITIDOS = {"Clase", "Gimnasio", "Reserva", "Grupal", "Individual", "Personal"}
-ESTADOS_RESERVA_PERMITIDOS = {"Pendiente", "Confirmada", "Cancelada"}
+ESTADOS_RESERVA_PERMITIDOS = {"Pendiente", "Confirmada", "Cancelada", "pendiente", "confirmada", "cancelada"}
 
 
 class ServicioBase(BaseModel):
@@ -124,7 +124,7 @@ class ReservaBase(BaseModel):
     def validar_estado_reserva(cls, value: str) -> str:
         if value not in ESTADOS_RESERVA_PERMITIDOS:
             raise ValueError("El estado de reserva debe ser Pendiente, Confirmada o Cancelada")
-        return value
+        return value.capitalize() if value else value
 
 
 class ReservaCreate(ReservaBase):
@@ -143,7 +143,7 @@ class ReservaUpdate(BaseModel):
     def validar_estado_reserva(cls, value: Optional[str]) -> Optional[str]:
         if value is not None and value not in ESTADOS_RESERVA_PERMITIDOS:
             raise ValueError("El estado de reserva debe ser Pendiente, Confirmada o Cancelada")
-        return value
+        return value.capitalize() if value else value
 
     @model_validator(mode="after")
     def validar_cuerpo_no_vacio(self) -> "ReservaUpdate":
