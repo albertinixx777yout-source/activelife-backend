@@ -90,18 +90,19 @@ def update_cliente(id_cliente: int, cliente: ClienteCreate):
     return data.data[0]
 
 
-@router.delete("/{id_cliente}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{id_cliente}")
 def delete_cliente(id_cliente: int):
 
     if not supabase:
         raise HTTPException(status_code=500, detail="Base de datos no configurada")
 
-    data = supabase.table("CLIENTE").delete().eq("id_cliente", id_cliente).execute()
+    data = supabase.table("CLIENTE").update({"estado_cliente": "Inactivo"}).eq("id_cliente", id_cliente).execute()
 
     if not data.data:
         raise HTTPException(status_code=404, detail="Cliente no encontrado")
 
-    return None
+    return {"mensaje": f"Cliente {id_cliente} desactivado correctamente (soft delete)", "estado_cliente": "Inactivo"}
+
 
 
 # =====================================================

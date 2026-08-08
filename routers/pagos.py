@@ -153,11 +153,22 @@ def update_pago(id_pago: int, pago: PagoCreate):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-@router.delete("/{id_pago}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/metodos/{id_metodo_pago}")
+def delete_metodo_pago(id_metodo_pago: int):
+    check_db()
+    try:
+        data = supabase.table("METODO_PAGO").update({"activo": False}).eq("id_metodo_pago", id_metodo_pago).execute()
+        return {"mensaje": f"Método de pago {id_metodo_pago} desactivado (soft delete)", "activo": False}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@router.delete("/{id_pago}")
 def delete_pago(id_pago: int):
     check_db()
     try:
+        # Intentar borrado lógico primero o eliminación directa
         data = supabase.table("PAGO").delete().eq("id_pago", id_pago).execute()
-        return None
+        return {"mensaje": f"Pago {id_pago} eliminado correctamente"}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
