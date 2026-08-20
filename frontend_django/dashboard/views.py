@@ -1,7 +1,10 @@
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render
 import requests
 from django.conf import settings
 
+@login_required
+@permission_required('dashboard.index_viewer', raise_exception=True)
 def index(request):
     try:
         # Consumimos directamente tu API de produccion (en la nube)
