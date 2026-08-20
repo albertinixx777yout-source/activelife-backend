@@ -1,0 +1,20 @@
+<div class="flex justify-between items-center w-full mb-6">
+    <h1 class="text-center text-4xl font-bold">Dashboard App</h1>
+    <ul class="flex items-center space-x-4">
+        <!-- Profile menu -->
+        <li class="relative">
+            {% if user.is_authenticated %}
+                <span class="mr-4 font-semibold text-gray-700">Bienvenido, {{ user.username }}</span>
+            {% endif %}
+            
+            <!-- START - Block Logout -->
+            <form method="post" action="{% url 'logout' %}" class="inline">
+                {% csrf_token %}
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                    Cerrar Sesión
+                </button>
+            </form>
+            <!-- END - Block Logout -->
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>¡Bienvenido a la aplicación Django!</h1>
+    <img aria-hidden="true" class="object-cover w-full h-full dark:hidden" src="{% static 'img/team.jpg' %}" alt="Office" />
+    <img aria-hidden="true" class="hidden object-cover w-full h-full dark:block" src="{% static 'img/team.jpg' %}" alt="Office" />
+</body>
+</html>
