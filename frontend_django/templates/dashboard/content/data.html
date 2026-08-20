@@ -68,10 +68,10 @@
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 {% for p in pagos %}
                 <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3 text-sm">#{{ p.id }}</td>
-                    <td class="px-4 py-3 font-semibold">{{ p.cliente }}</td>
+                    <td class="px-4 py-3 text-sm">#{{ p.id_pago }}</td>
+                    <td class="px-4 py-3 font-semibold">Cliente {{ p.id_cliente }}</td>
                     <td class="px-4 py-3 text-sm text-green-600 font-bold">$ {{ p.monto }}</td>
-                    <td class="px-4 py-3 text-sm">{{ p.fecha }}</td>
+                    <td class="px-4 py-3 text-sm">{{ p.fecha_pago }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
